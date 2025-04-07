@@ -29,6 +29,10 @@ public class PaymentByCardTest {
         open("http://localhost:8080");
     }
 
+    @AfterEach
+    void shouldCleanBase() {
+        SQLHelper.cleanDatabase();
+    }
 
     @Test
     @DisplayName("Should approved card payment")
