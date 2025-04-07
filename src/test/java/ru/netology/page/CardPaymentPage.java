@@ -2,6 +2,7 @@ package ru.netology.page;
 
 import com.codeborne.selenide.SelenideElement;
 import org.openqa.selenium.Keys;
+import ru.netology.data.DataHelper;
 
 import java.time.Duration;
 
@@ -11,12 +12,12 @@ import static com.codeborne.selenide.Selectors.withText;
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.$$;
 
-public class DebitPage {
+public class CardPaymentPage {
     // Элемент заголовка страницы
     private SelenideElement heading = $(withText("Оплата по карте"));
 
     // Проверка видимости заголовка
-    public DebitPage() {
+    public CardPaymentPage() {
         heading.shouldBe(visible); // Проверяем, что заголовок виден
     }
 
@@ -39,12 +40,12 @@ public class DebitPage {
     private final SelenideElement codeError = $$(".input__inner").findBy(text("CVC/CVV")).parent().$(".input__sub");
 
     // заполняем форму 
-    public void fillCardPaymentForm(String cardNumber, String month, String year, String holder, String CVC) {
-        cardNumberField.setValue(cardNumber);
-        monthField.setValue(month);
-        yearField.setValue(year);
-        ownerField.setValue(holder);
-        codeField.setValue(CVC);
+    public void fillCardPaymentForm(DataHelper.CardInfo cardInfo) {
+        cardNumberField.setValue(cardInfo.getCardNumber());
+        monthField.setValue(cardInfo.getMonth());
+        yearField.setValue(cardInfo.getYear());
+        ownerField.setValue(cardInfo.getHolder());
+        codeField.setValue(cardInfo.getCvc());
         continueButton.click();
     }
 
@@ -75,7 +76,7 @@ public class DebitPage {
         holderError.shouldBe(visible).shouldHave(text(expectedText));
     }
 
-    public void shouldSeeCodeError(String expectedText) {
+    public void shouldSeeCVVError(String expectedText) {
         codeError.shouldBe(visible).shouldHave(text(expectedText));
     }
 // очистка полей

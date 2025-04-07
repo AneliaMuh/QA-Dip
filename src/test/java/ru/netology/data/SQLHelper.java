@@ -6,6 +6,7 @@ import org.apache.commons.dbutils.handlers.ScalarHandler;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.SQLException;
 
 public class SQLHelper {
     private static final QueryRunner runner = new QueryRunner();
@@ -13,10 +14,10 @@ public class SQLHelper {
     private SQLHelper() {
 
     }
+
     private static final String url = System.getProperty("db.url");
     private static final String user = System.getProperty("db.user");
     private static final String password = System.getProperty("db.password");
-    private static final QueryRunner runner = new QueryRunner();
 
 
     @SneakyThrows
@@ -44,14 +45,13 @@ public class SQLHelper {
         }
     }
 
-    // Получает статус оплаты в кредит
-    @SneakyThrows
-    public static String getCreditPaymentStatus() {
-        Thread.sleep(500);
-        String query = "SELECT status FROM credit_request_entity ORDER BY created DESC LIMIT 1;";
-        try (Connection connection = getConnection()) {
-            return runner.query(connection, query, new ScalarHandler<>());
+        // Получает статус оплаты в кредит
+        @SneakyThrows
+        public static String getCreditPaymentStatus () {
+            Thread.sleep(500);
+            String query = "SELECT status FROM credit_request_entity ORDER BY created DESC LIMIT 1;";
+            try (Connection connection = getConnection()) {
+                return runner.query(connection, query, new ScalarHandler<>());
+            }
         }
     }
-
-}

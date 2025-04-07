@@ -17,13 +17,14 @@ public class PaymentPage {
         heading.shouldBe(visible); // Проверяем, что заголовок виден
     }
     // Переход на страницу оплаты дебетовой картой
-    public DebitPage proceedToDebitCardPayment() {
+    public CardPaymentPage proceedToPaymentByCard() {
         buyButton.click(); // Нажимаем на кнопку "Купить"
-        return new DebitPage(); // Возвращаем объект страницы для дебетовой карты
+        return new CardPaymentPage(); // Возвращаем объект страницы для дебетовой карты
     }
     // Переход на страницу оплаты кредитной картой
-    public CreditPage proceedToCreditCardPayment() {
+    public CreditPaymentPage proceedToPaymentOnCredit() {
         creditButton.click(); // Нажимаем на кнопку "Купить в кредит"
-        return new CreditPage(); // Возвращаем объект страницы для кредитной карты
+        return new CreditPaymentPage(); // Возвращаем объект страницы для кредитной карты
     }
+    //proceedToPaymentByCard
 }
