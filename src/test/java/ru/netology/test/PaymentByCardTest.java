@@ -144,7 +144,7 @@ public class PaymentByCardTest {
         paymentPage.proceedToPaymentByCard();
         var cardPaymentPage = new CardPaymentPage();
         cardPaymentPage.fillCardPaymentForm(cardInfo);
-        cardPaymentPage.shouldSeeYearError("Истек срок действия карты");
+        cardPaymentPage.shouldSeeYearError("Истёк срок действия карты");
     }
 
     @Test
@@ -211,7 +211,7 @@ public class PaymentByCardTest {
         paymentPage.proceedToPaymentByCard();
         var cardPaymentPage = new CardPaymentPage();
         cardPaymentPage.fillCardPaymentForm(cardInfo);
-        cardPaymentPage.shouldSeeHolderError("Неверный формат");
+        cardPaymentPage.shouldSeeHolderError("Поле обязательно для заполнения");
     }
 
     @Test
