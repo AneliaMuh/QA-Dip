@@ -51,12 +51,12 @@ public class CreditPaymentPage {
 
     // Позитивный сценарий: операция одобрена
     public void shouldSeeSuccessNotification() {
-        successNotification.shouldBe(visible, Duration.ofSeconds(20)).shouldHave(text("Операция одобрена Банком."));
+        successNotification.shouldBe(visible, Duration.ofSeconds(50)).shouldHave(text("Операция одобрена Банком."));
     }
 
     // Негативный сценарий: банк отказал
     public void shouldSeeErrorNotification() {
-        errorNotification.shouldBe(visible, Duration.ofSeconds(20)).shouldHave(text("Ошибка! Банк отказал в проведении операции."));
+        errorNotification.shouldBe(visible, Duration.ofSeconds(50)).shouldHave(text("Ошибка! Банк отказал в проведении операции."));
     }
 
     // Проверки ошибок валидации

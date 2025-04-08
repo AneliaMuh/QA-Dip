@@ -33,7 +33,9 @@ public class DataHelper {
     }
     // Генерация валидного владельца
     public static String getValidHolder() {
-        return fakerEn.name().fullName();
+        String fullName = fakerEn.name().fullName();
+        // Оставляем только буквы, пробелы и тире
+        return fullName.replaceAll("[^A-Za-zА-Яа-яёЁ\\-\\s]", "");
     }
     // Генерация валидного CVC
     public static String getValidCvc() {
@@ -103,7 +105,7 @@ public class DataHelper {
 
     // Генерация невалидного года (например, год, который был в прошлом)
     public static String getPastYear() {
-        int year = fakerEn.number().numberBetween(0, LocalDate.now().getYear() - 1);  // Генерация прошлого года
+        int year = fakerEn.number().numberBetween(1, 25);  // Генерация прошлого года
         return String.format("%02d", year % 100); // Генерация года в формате двух цифр
     }
     // Метод для получения данных с истекшего года в поле Год
@@ -144,7 +146,7 @@ public class DataHelper {
 
     // Генерация невалидного имени владельца со спецсимволами
     public static String getInvalidHolderWithSpecialChars() {
-        return fakerEn.name().firstName() + fakerEn.letterify("####@#$");
+        return fakerEn.name().firstName() + fakerEn.letterify("!@#$%^&*()+=~`{}[]|:;'<>,.?/_");
     }
     // Метод для получения данных со спецсимволами в поле Владелец
     public static CardInfo getHolderSpecialChars() {

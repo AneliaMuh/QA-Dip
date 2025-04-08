@@ -35,7 +35,7 @@ public class PaymentByCardTest {
     }
 
     @Test
-    @DisplayName("Should approved card payment")
+    @DisplayName("Should be approved card payment") // Должен быть одобрен платеж по карте
      void shouldApprovePaymentWithValidCard() {
         var cardInfo = DataHelper.getValidCardInfo();
         var paymentPage = new PaymentPage();
@@ -48,7 +48,7 @@ public class PaymentByCardTest {
     }
 
     @Test
-    @DisplayName("Should declined payment")
+    @DisplayName("Should be declined payment") // Платеж должен быть отклонен
     void shouldDeclinedPaymentWithDeclinedCard() {
         var cardInfo = DataHelper.getValidCardInfoCredit();
         var paymentPage = new PaymentPage();
@@ -60,7 +60,7 @@ public class PaymentByCardTest {
     }
 
     @Test
-    @DisplayName("Should be an error when paying with an unknown card")
+    @DisplayName("Should be an error when paying with an unknown card") // Должна быть ошибка при оплате неизвестной картой
     void cardNumberNotRegistered() {
         var cardInfo =  DataHelper.getUnknownCardInfo();
         var paymentPage = new PaymentPage();
@@ -71,7 +71,7 @@ public class PaymentByCardTest {
     }
 
     @Test
-    @DisplayName("Should be an error when paying card number is too short")
+    @DisplayName("Should be an error when paying card number is too short") // Должна быть ошибка, если номер платежной карты слишком короткий
     void cardNumberIsTooShort() {
         var cardInfo = DataHelper.getCardWithShortNumber();
         var paymentPage = new PaymentPage();
@@ -82,7 +82,7 @@ public class PaymentByCardTest {
     }
 
     @Test
-    @DisplayName("Should show error when card number is empty")
+    @DisplayName("Should show error when card number is empty") // Должна отображаться ошибка, если номер карты пуст
     void fieldCardNumberIsEmpty() {
         var cardInfo = DataHelper.getEmptyCardNumberInfo();
         var paymentPage = new PaymentPage();
@@ -93,7 +93,7 @@ public class PaymentByCardTest {
     }
 
     @Test
-    @DisplayName("Should show error if the month field is empty")
+    @DisplayName("Should show error if the month field is empty") // Если поле месяца пустое, должно отображаться сообщение об ошибке.
     void fieldMonthIsEmpty() {
         var cardInfo = DataHelper.getEmptyMonthInfo();
         var paymentPage = new PaymentPage();
@@ -104,7 +104,7 @@ public class PaymentByCardTest {
     }
 
     @Test
-    @DisplayName("Should show error if the month field is filled with a single digit")
+    @DisplayName("Should show error if the month field is filled with a single digit") // Должна отображаться ошибка, если поле месяца заполнено одной цифрой.
     void monthFilledOneNumber() {
         var cardInfo = DataHelper.getMonthOneNumber();
         var paymentPage = new PaymentPage();
@@ -115,7 +115,7 @@ public class PaymentByCardTest {
     }
 
     @Test
-    @DisplayName("Should show error when month is 00")
+    @DisplayName("Should show error when month is 00") // Должна выдавать ошибку, если месяц равен 00
     void monthFilledIs00() {
         var cardInfo = DataHelper.getMonthWithZeros();
         var paymentPage = new PaymentPage();
@@ -126,7 +126,7 @@ public class PaymentByCardTest {
     }
 
     @Test
-    @DisplayName("Should show error when entering invalid month")
+    @DisplayName("Should show error when entering invalid month") // Должна выдавать ошибку при вводе неверного месяца
     void filledInvalidMonth() {
         var cardInfo = DataHelper.getMonthUnreal();
         var paymentPage = new PaymentPage();
@@ -137,7 +137,7 @@ public class PaymentByCardTest {
     }
 
     @Test
-    @DisplayName("Should show error when entering the past year when card payment")
+    @DisplayName("Should show error when entering the past year when card payment") // При вводе прошлого года при оплате картой должна отображаться ошибка
     void enteringThePastYear() {
         var cardInfo = DataHelper.getInvalidPastYear();
         var paymentPage = new PaymentPage();
@@ -148,7 +148,7 @@ public class PaymentByCardTest {
     }
 
     @Test
-    @DisplayName("Should show error if the year field is empty")
+    @DisplayName("Should show error if the year field is empty") // Если поле года пустое, должна отображаться ошибка.
     void fieldYearIsEmpty() {
         var cardInfo = DataHelper.getEmptyYearInfo();
         var paymentPage = new PaymentPage();
@@ -159,7 +159,7 @@ public class PaymentByCardTest {
     }
 
     @Test
-    @DisplayName("Should show error if the year field is filled with a single digit")
+    @DisplayName("Should show error if the year field is filled with a single digit") // Должна отображаться ошибка, если поле года заполнено одной цифрой.
     void yearFilledOneNumber() {
         var cardInfo = DataHelper.getYearOneNumber();
         var paymentPage = new PaymentPage();
@@ -170,7 +170,7 @@ public class PaymentByCardTest {
     }
 
     @Test
-    @DisplayName("Should show error if the holder field is filled numbers")
+    @DisplayName("Should show error if the holder field is filled numbers") // Должна отображаться ошибка, если поле держателя заполнено числами
     void holderFilledNumbers() {
         var cardInfo = DataHelper.getHolderNumbers();
         var paymentPage = new PaymentPage();
@@ -181,7 +181,7 @@ public class PaymentByCardTest {
     }
 
     @Test
-    @DisplayName("Should show error if the holder field is filled in Cyrillic")
+    @DisplayName("Should show error if the holder field is filled in Cyrillic") // Должна отображаться ошибка, если поле владельца заполнено кириллицей.
     void holderFilledCyrillic() {
         var cardInfo = DataHelper.getCyrillicHolder();
         var paymentPage = new PaymentPage();
@@ -193,7 +193,7 @@ public class PaymentByCardTest {
     }
 
     @Test
-    @DisplayName("Should show error if the holder field is filled in special chars")
+    @DisplayName("Should show error if the holder field is filled in special chars") // Должна отображаться ошибка, если поле держателя заполнено специальными символами.
     void holderFilledSpecialChars() {
         var cardInfo = DataHelper.getHolderSpecialChars();
         var paymentPage = new PaymentPage();
@@ -204,7 +204,7 @@ public class PaymentByCardTest {
     }
 
     @Test
-    @DisplayName("Should show error if the holder field is empty")
+    @DisplayName("Should show error if the holder field is empty") // Должна отображаться ошибка, если поле держателя пустое.
     void fieldHolderIsEmpty() {
         var cardInfo = DataHelper.getEmptyHolderInfo();
         var paymentPage = new PaymentPage();
@@ -215,7 +215,7 @@ public class PaymentByCardTest {
     }
 
     @Test
-    @DisplayName("Should show error if the CVV field is empty")
+    @DisplayName("Should show error if the CVV field is empty") // Если поле CVV пустое, должна отображаться ошибка.
     void fieldCVVIsEmpty() {
         var cardInfo = DataHelper.getEmptyCVVInfo();
         var paymentPage = new PaymentPage();
@@ -226,7 +226,7 @@ public class PaymentByCardTest {
     }
 
     @Test
-    @DisplayName("Should show error if the CVV is short")
+    @DisplayName("Should show error if the CVV is short") // Если CVV короткий, должна отображаться ошибка.
     void fieldCVVIsShort() {
         var cardInfo = DataHelper.getInvalidCVVShort();
         var paymentPage = new PaymentPage();
